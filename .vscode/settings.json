@@ -4,7 +4,8 @@
         "next.js",
         "banito",
         "cuando",
-        "unrs"
+        "unrs",
+        "vercel",
     ],
     "editor.tabSize": 2,
 }
