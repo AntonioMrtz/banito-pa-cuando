@@ -22,7 +22,7 @@ export default function Home({}) {
   }, []);
 
   return (
-    <div className="relative flex bg-secondary-blue-100 min-h-screen w-full items-center justify-center">
+    <main className="relative flex bg-secondary-blue-100 min-h-screen w-full items-center justify-center">
       <Image
         src={heroImage}
         alt="Hero of Los Alcazares"
@@ -37,6 +37,6 @@ export default function Home({}) {
         {locations &&
           locations.map((v) => <span key={v.id}>{v.tags.name}</span>)}
       </div>
-    </div>
+    </main>
   );
 }
