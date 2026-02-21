@@ -5,6 +5,13 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  // add custom rules for hooks
+  {
+    rules: {
+      "react-hooks/exhaustive-deps": "error",
+      "react-hooks/rules-of-hooks": "error",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

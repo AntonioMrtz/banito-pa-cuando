@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
     ? locations.filter((v) =>
         v.tags.name.toLowerCase().includes(text.toLowerCase()),
       )
-    : locations;
+    : [];
 
   const pagination = filtered.slice(0, LIMIT_LOCATIONS);
 
