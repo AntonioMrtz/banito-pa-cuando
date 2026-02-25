@@ -2,32 +2,36 @@ import { PhotonFeatureDTO, PhotonFeaturePropertiesDTO } from "./photon.model";
 import {
   MAINLAND_SPAIN_BBOX,
   PHOTON_API_URL,
-  SUPPORTED_COUNTRIES,
-  SupportedCountry,
   QUERY_MINIMUM,
   DEFAULT_BIAS,
   DEFAULT_LAYERS,
 } from "./photon.constants";
 import { mapLocation } from "./photon.mapper";
 import { LocationModel } from "@/src/features/locations/locations.model";
+import { SupportedCountry } from "@/src/features/locations/location.constants";
 
-export { findLocations, type PhotonFeaturePropertiesDTO as LocationFeature };
+export {
+  findLocations,
+  buildFindLocationsQuery,
+  type PhotonFeaturePropertiesDTO,
+};
 
 const findLocations = async (
   placeName: string,
   limit: number,
+  countryCodes: Readonly<SupportedCountry[]>,
 ): Promise<LocationModel[]> => {
   if (!placeName.trim()) {
     return [];
   }
 
-  const query = _buildFindLocationsQuery(placeName);
+  const query = buildFindLocationsQuery(placeName);
   const response = await fetch(query);
   const json = (await response.json()) as PhotonFeatureDTO;
   const elements = json.features as PhotonFeaturePropertiesDTO[];
 
   const spainMainlandFiltered = elements.filter((v) =>
-    SUPPORTED_COUNTRIES.includes(v.properties.countrycode as SupportedCountry),
+    countryCodes.includes(v.properties.countrycode as SupportedCountry),
   );
 
   const limitedResults = spainMainlandFiltered.slice(0, limit);
@@ -36,8 +40,8 @@ const findLocations = async (
   return locations;
 };
 
-const _buildFindLocationsQuery = (place: string): string => {
-  const sanitized = encodeURIComponent(place.trim().replaceAll(" ", "-"));
+const buildFindLocationsQuery = (place: string): string => {
+  const sanitized = encodeURIComponent(place.trim().replace(/\s+/g, "-"));
   const params = new URLSearchParams({
     q: sanitized,
     lang: "default",
