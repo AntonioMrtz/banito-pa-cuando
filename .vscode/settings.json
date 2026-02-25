@@ -1,13 +1,15 @@
 {
-    "editor.formatOnSave": true,
-    "cSpell.words": [
-        "next.js",
-        "banito",
-        "cuando",
-        "unrs",
-        "vercel",
-        "alcazares",
-        "Lato"
-    ],
-    "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "next.js",
+    "banito",
+    "cuando",
+    "unrs",
+    "vercel",
+    "alcazares",
+    "Lato",
+    "countrycode",
+    "bbox"
+  ],
+  "editor.tabSize": 2
 }

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import locationsJson from "./../../data/locations/locations.json";
-
-const LIMIT_LOCATIONS = 5;
+import locationsJson from "@/src/data/locations/locations.json";
+import { LIMIT_LOCATIONS } from "@/src/constants/location";
 
 export async function GET(req: NextRequest) {
   const text = req.nextUrl.searchParams.get("text") || "";

@@ -2,7 +2,7 @@ import {
   InputGroup as InputGroupUI,
   InputGroupAddon,
   InputGroupInput,
-} from "@/components/ui/input-group";
+} from "@/src/components/ui/input-group";
 import { Search } from "lucide-react";
 import * as React from "react";
 
@@ -22,7 +22,7 @@ export function InputGroup({
   ...props
 }: SearchInputGroupProps) {
   return (
-    <InputGroupUI className="max-w-xs" {...props}>
+    <InputGroupUI className="max-w-xs border-red-400" {...props}>
       <InputGroupInput
         placeholder="Search..."
         value={value}
@@ -31,9 +31,7 @@ export function InputGroup({
       <InputGroupAddon>
         <Search />
       </InputGroupAddon>
-      <InputGroupAddon align="inline-end">
-        {resultsText || "12 results"}
-      </InputGroupAddon>
+      <InputGroupAddon align="inline-end">{resultsText}</InputGroupAddon>
     </InputGroupUI>
   );
 }

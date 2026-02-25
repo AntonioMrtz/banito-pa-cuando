@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --no-error-on-unmatched-pattern --write \"*.{ts,tsx,js,jsx,json,css,scss,md}\""
+    "format": "prettier --no-error-on-unmatched-pattern --write \"**/*.{ts,tsx,js,jsx,css,scss,md}\""
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
