@@ -26,3 +26,5 @@ const DEFAULT_BIAS = {
   location_bias_scale: 0.1,
 };
 const QUERY_MINIMUM = 20;
+
+const x = { a: 1 };
