@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --no-error-on-unmatched-pattern --write \"./app/**/*.{ts,tsx,js,jsx,json,css,scss,md}\""
+    "format": "prettier --no-error-on-unmatched-pattern --write \"**/*.{ts,tsx,js,jsx,css,scss,md}\"",
+    "format:check": "prettier --no-error-on-unmatched-pattern --check \"**/*.{ts,tsx,js,jsx,css,scss,md}\""
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
