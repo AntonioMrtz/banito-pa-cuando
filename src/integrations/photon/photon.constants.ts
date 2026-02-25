@@ -27,4 +27,5 @@ const DEFAULT_BIAS = {
 };
 const QUERY_MINIMUM = 20;
 
+console.log();
 const x = { a: 1 };
