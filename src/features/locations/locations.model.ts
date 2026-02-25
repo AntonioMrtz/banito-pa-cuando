@@ -6,6 +6,7 @@ interface LocationModel {
   city: string;
   state: string;
   country: string;
+  countryCode: string;
   coordinates: {
     lat: number;
     lon: number;

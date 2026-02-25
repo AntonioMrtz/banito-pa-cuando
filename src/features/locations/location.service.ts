@@ -1,3 +1,4 @@
+import { SUPPORTED_COUNTRIES } from "./location.constants";
 import { LocationModel } from "./locations.model";
 import * as PhotonService from "@/src/integrations/photon/photon.service";
 
@@ -11,5 +12,5 @@ const findLocations = async (
   if (!placeName) {
     return [];
   }
-  return PhotonService.findLocations(placeName, limit);
+  return PhotonService.findLocations(placeName, limit, SUPPORTED_COUNTRIES);
 };

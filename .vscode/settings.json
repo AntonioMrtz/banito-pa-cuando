@@ -12,7 +12,8 @@
     "bbox",
     "Canarias",
     "Baleares",
-    "Meteo"
+    "Meteo",
+    "Región"
   ],
   "editor.tabSize": 2
 }

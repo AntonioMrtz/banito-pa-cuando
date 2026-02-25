@@ -4,9 +4,7 @@
  */
 
 export {
-  SUPPORTED_COUNTRIES,
   PHOTON_API_URL,
-  type SupportedCountry,
   SPAIN_CENTER_COORDINATES,
   MAINLAND_SPAIN_BBOX,
   DEFAULT_LAYERS,
@@ -16,11 +14,6 @@ export {
 
 // API
 const PHOTON_API_URL = "https://photon.komoot.io/api/";
-
-// Supported countries
-const SUPPORTED_COUNTRIES = ["ES"] as const;
-
-type SupportedCountry = (typeof SUPPORTED_COUNTRIES)[number];
 
 // API filters and defaults
 const SPAIN_CENTER_COORDINATES = { lat: 40.463667, lon: -3.74922 };
