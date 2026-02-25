@@ -26,8 +26,3 @@ const DEFAULT_BIAS = {
   location_bias_scale: 0.1,
 };
 const QUERY_MINIMUM = 20;
-
-console.log();
-const x = { a: 1 };
-const y = { a: 1 };
-const yz = { a: 1 };
