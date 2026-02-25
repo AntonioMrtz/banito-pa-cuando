@@ -1,6 +1,6 @@
-type Props = {
+interface Props {
   params: Promise<{ id: string }>;
-};
+}
 
 export default async function LocationPage({ params }: Props) {
   const { id } = await params;

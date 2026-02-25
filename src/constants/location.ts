@@ -1,3 +1,0 @@
-export { LIMIT_LOCATIONS };
-
-const LIMIT_LOCATIONS = 5;

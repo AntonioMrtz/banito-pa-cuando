@@ -3,13 +3,16 @@ import Image from "next/image";
 import heroImage from "@/src/assets/images/hero-los-alcazares.jpg";
 import { useState, ChangeEvent, useRef } from "react";
 import debounce from "lodash.debounce";
-import { findPlaces, LocationFeature } from "@/src/services/locationService";
 import { InputGroup } from "@/src/components/atoms/InputGroup";
 import LocationName from "@/src/components/atoms/LocationName";
 import Link from "next/link";
+import { LocationModel } from "@/src/features/locations/locations.model";
+import { findLocations } from "@/src/features/locations/location.service";
+
+const MAX_ITEMS = 5;
 
 export default function Home({}) {
-  const [locations, setLocations] = useState<LocationFeature[] | null>(null);
+  const [locations, setLocations] = useState<LocationModel[] | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputGroupChange = (
@@ -24,9 +27,7 @@ export default function Home({}) {
     debounce(
       async (value: string) => {
         try {
-          const locations = await findPlaces({
-            text: value,
-          });
+          const locations = await findLocations(value, MAX_ITEMS);
           setLocations(locations);
         } catch (error) {
           console.error("failed to fetch locations", error);
@@ -57,15 +58,8 @@ export default function Home({}) {
         />
         {locations &&
           locations.map((v) => (
-            <Link
-              href={`/locations/${v.properties.osm_id}`}
-              key={v.properties.osm_id}
-            >
-              <LocationName
-                name={v.properties.name}
-                city={v.properties.city}
-                state={v.properties.state}
-              />
+            <Link href={`/locations/${v.id}`} key={v.id}>
+              <LocationName name={v.name} city={v.city} state={v.state} />
             </Link>
           ))}
       </div>
