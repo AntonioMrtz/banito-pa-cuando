@@ -11,7 +11,8 @@
     "countrycode",
     "bbox",
     "Canarias",
-    "Baleares"
+    "Baleares",
+    "Meteo"
   ],
   "editor.tabSize": 2
 }
