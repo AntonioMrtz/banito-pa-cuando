@@ -29,7 +29,6 @@
 
 <!-- Add issue number: #issue-number -->
 
-
 ## Proposed Changes
 
 <!-- List the specific changes made in this pull request. -->
@@ -45,7 +44,6 @@
 ## Screenshots
 
 <!-- If applicable, provide screenshots that help visualize the changes made. -->
-
 
 ## Assigned
 
