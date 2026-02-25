@@ -9,7 +9,8 @@ const mapLocation = (feature: PhotonFeaturePropertiesDTO): LocationModel => {
     name: feature.properties.name,
     city: feature.properties.city,
     state: feature.properties.state,
-    country: feature.properties.countrycode,
+    country: feature.properties.country,
+    countryCode: feature.properties.countrycode,
     coordinates: {
       lat: feature.geometry.coordinates[1],
       lon: feature.geometry.coordinates[0],
