@@ -29,3 +29,4 @@ const QUERY_MINIMUM = 20;
 
 console.log();
 const x = { a: 1 };
+const y = { a: 1 };
