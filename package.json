@@ -16,7 +16,8 @@
     "test:watch": "vitest",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "test:e2e": "npm run build && start-server-and-test 'npm run start' http://localhost:3000 'npm run cypress:run'"
+    "test:e2e": "npm run build && start-server-and-test 'npm run start' http://localhost:3000 'npm run cypress:run'",
+    "prepare": "husky"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -46,6 +47,7 @@
     "eslint-config-next": "16.1.6",
     "eslint-plugin-cypress": "^6.1.0",
     "eslint-plugin-vitest": "^0.5.4",
+    "husky": "^9.1.7",
     "jsdom": "^28.1.0",
     "prettier": "^3.8.1",
     "start-server-and-test": "^2.1.5",
