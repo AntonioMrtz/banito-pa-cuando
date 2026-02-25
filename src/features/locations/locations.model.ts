@@ -1,4 +1,4 @@
-export { type LocationModel };
+export { type LocationModel, type Coordinates, type BoundingBox };
 
 interface LocationModel {
   id: number;
@@ -7,8 +7,17 @@ interface LocationModel {
   state: string;
   country: string;
   countryCode: string;
-  coordinates: {
-    lat: number;
-    lon: number;
-  };
+  coordinates: Coordinates;
+}
+
+interface Coordinates {
+  lat: number;
+  lon: number;
+}
+
+interface BoundingBox {
+  minLat: number;
+  minLon: number;
+  maxLat: number;
+  maxLon: number;
 }

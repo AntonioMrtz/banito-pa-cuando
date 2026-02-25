@@ -31,6 +31,7 @@ export default function Home({}) {
           setLocations(locations);
         } catch (error) {
           console.error("failed to fetch locations", error);
+          setLocations([]);
         }
       },
       350,
