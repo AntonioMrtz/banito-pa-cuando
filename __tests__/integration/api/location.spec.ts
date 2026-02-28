@@ -1,7 +1,7 @@
 import { findLocations } from "@/src/features/locations/location.service";
 import { describe, expect, it } from "vitest";
 
-describe("Location service", () => {
+describe("Location API", () => {
   it("Should return an empty array if no search text is provided", async () => {
     const result = await findLocations("", 5);
     expect(result.length).toEqual(0);
@@ -16,8 +16,9 @@ describe("Location service", () => {
   });
 
   it("Should return an array with a length equal to the limit", async () => {
-    const result = await findLocations("Murcia", 3);
-    expect(result.length).toEqual(3);
+    const LIMIT = 3;
+    const result = await findLocations("Murcia", LIMIT);
+    expect(result.length).toEqual(LIMIT);
   });
 
   it("Should return an empty array if no location is found", async () => {

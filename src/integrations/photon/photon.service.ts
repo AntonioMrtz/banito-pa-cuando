@@ -1,10 +1,10 @@
 import { PhotonFeatureDTO, PhotonFeaturePropertiesDTO } from "./photon.model";
 import {
-  MAINLAND_SPAIN_BBOX,
   PHOTON_API_URL,
   QUERY_MINIMUM,
   DEFAULT_BIAS,
   DEFAULT_LAYERS,
+  QUERY_MAINLAND_SPAIN_BBOX,
 } from "./photon.constants";
 import { mapLocation } from "./photon.mapper";
 import { LocationModel } from "@/src/features/locations/locations.model";
@@ -21,10 +21,6 @@ const findLocations = async (
   limit: number,
   countryCodes: Readonly<SupportedCountry[]>,
 ): Promise<LocationModel[]> => {
-  if (!placeName.trim()) {
-    return [];
-  }
-
   const query = buildFindLocationsQuery(placeName);
   const response = await fetch(query);
   const json = (await response.json()) as PhotonFeatureDTO;
@@ -45,7 +41,7 @@ const buildFindLocationsQuery = (place: string): string => {
   const params = new URLSearchParams({
     q: sanitized,
     lang: "default",
-    bbox: MAINLAND_SPAIN_BBOX,
+    bbox: QUERY_MAINLAND_SPAIN_BBOX,
     osm_tag: "place",
     limit: QUERY_MINIMUM.toString(),
     lat: String(DEFAULT_BIAS.lat),

@@ -1,18 +1,22 @@
 {
   "editor.formatOnSave": true,
   "cSpell.words": [
-    "next.js",
-    "banito",
-    "cuando",
-    "unrs",
-    "vercel",
     "alcazares",
-    "Lato",
-    "countrycode",
+    "Baleares",
+    "banito",
     "bbox",
     "Canarias",
-    "Baleares",
-    "Región"
+    "countrycode",
+    "cuando",
+    "generationtime",
+    "Lato",
+    "Meteo",
+    "next.js",
+    "Región",
+    "unrs",
+    "vercel",
+    "weathercode",
+    "windspeed"
   ],
   "editor.tabSize": 2
 }

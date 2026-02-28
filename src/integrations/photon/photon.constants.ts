@@ -3,21 +3,23 @@
  * https://photon.komoot.io/api/?q=los-urru&limit=5&bbox=-9.5,35.9,3.3,43.8&osm_tag=place
  */
 
+import {
+  MAINLAND_SPAIN_BBOX,
+  SPAIN_CENTER_COORDINATES,
+} from "@/src/features/locations/location.constants";
+
 export {
   PHOTON_API_URL,
-  SPAIN_CENTER_COORDINATES,
-  MAINLAND_SPAIN_BBOX,
   DEFAULT_LAYERS,
   DEFAULT_BIAS,
   QUERY_MINIMUM,
+  QUERY_MAINLAND_SPAIN_BBOX,
 };
 
 // API
 const PHOTON_API_URL = "https://photon.komoot.io/api/";
 
 // API filters and defaults
-const SPAIN_CENTER_COORDINATES = { lat: 40.463667, lon: -3.74922 };
-const MAINLAND_SPAIN_BBOX = "-9.37,35.95,3.39,43.82";
 const DEFAULT_LAYERS = ["locality", "district", "city"];
 const DEFAULT_BIAS = {
   lat: SPAIN_CENTER_COORDINATES.lat,
@@ -26,3 +28,9 @@ const DEFAULT_BIAS = {
   location_bias_scale: 0.1,
 };
 const QUERY_MINIMUM = 20;
+const QUERY_MAINLAND_SPAIN_BBOX = [
+  MAINLAND_SPAIN_BBOX.minLon,
+  MAINLAND_SPAIN_BBOX.minLat,
+  MAINLAND_SPAIN_BBOX.maxLon,
+  MAINLAND_SPAIN_BBOX.maxLat,
+].join(",");
