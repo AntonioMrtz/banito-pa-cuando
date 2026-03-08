@@ -74,5 +74,10 @@ describe("Photon service", () => {
         `location_bias_scale=${DEFAULT_BIAS.location_bias_scale}`,
       );
     });
+
+    it("Should normalize accented characters into lowercase with dashes", () => {
+      const query = buildFindLocationsQuery("Los Alcázares");
+      expect(query).toContain("q=los-alcazares");
+    });
   });
 });

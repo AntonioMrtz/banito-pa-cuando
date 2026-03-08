@@ -16,7 +16,11 @@
     "unrs",
     "vercel",
     "weathercode",
-    "windspeed"
+    "windspeed",
+    "windgust10m",
+    "windgust_10m",
+    "Alcázares",
+    "Bañito"
   ],
   "editor.tabSize": 2
 }

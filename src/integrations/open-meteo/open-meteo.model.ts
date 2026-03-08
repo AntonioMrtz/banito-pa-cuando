@@ -21,6 +21,7 @@ interface OpenMeteoHourlyUnitsDTO {
   apparent_temperature: string;
   precipitation: string;
   windspeed_10m: string;
+  wind_gusts_10m: string;
 }
 
 interface OpenMeteoHourlyDataDTO {
@@ -28,4 +29,5 @@ interface OpenMeteoHourlyDataDTO {
   apparent_temperature: number[];
   precipitation: number[];
   windspeed_10m: number[];
+  wind_gusts_10m: number[];
 }

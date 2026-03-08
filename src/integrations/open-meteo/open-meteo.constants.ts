@@ -15,4 +15,5 @@ const DEFAULT_HOURLY_PARAMS = [
   "apparent_temperature",
   "precipitation",
   "windspeed_10m",
+  "wind_gusts_10m",
 ];
