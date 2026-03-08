@@ -1,9 +1,14 @@
 import { SUPPORTED_COUNTRIES } from "@/src/features/locations/location.constants";
 import {} from "@/src/integrations/photon/photon.constants";
 import { findLocations } from "@/src/integrations/photon/photon.service";
-import { describe, it, expect } from "vitest";
+import { ZodError } from "zod";
+import { afterEach, describe, it, expect, vi } from "vitest";
 
 describe("Photon API", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   describe("findLocations", () => {
     it("Should return location when searching for it", async () => {
       const result = await findLocations("Murcia", 5, SUPPORTED_COUNTRIES);
@@ -33,6 +38,43 @@ describe("Photon API", () => {
       result.forEach((location) => {
         expect(location.countryCode).toEqual("ES");
       });
+    });
+
+    it("Should throw a ZodError when API payload has invalid shape", async () => {
+      const invalidPayload = {
+        features: [
+          {
+            type: "Feature",
+            properties: {
+              osm_type: "N",
+              osm_id: 1,
+              osm_key: "place",
+              osm_value: "city",
+              type: "city",
+              postcode: "28001",
+              countrycode: "ES",
+              name: "Madrid",
+              district: "Center",
+              city: "Madrid",
+              county: "Madrid",
+              state: "Community of Madrid",
+              country: "Spain",
+            },
+            geometry: {
+              type: "Point",
+              coordinates: "-3.7038,40.4168",
+            },
+          },
+        ],
+      };
+
+      vi.spyOn(global, "fetch").mockResolvedValue({
+        json: async () => invalidPayload,
+      } as Response);
+
+      await expect(
+        findLocations("Madrid", 5, SUPPORTED_COUNTRIES),
+      ).rejects.toBeInstanceOf(ZodError);
     });
   });
 });

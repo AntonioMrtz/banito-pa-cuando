@@ -6,7 +6,7 @@ import {
   OPEN_METEO_API_URL,
   OPEN_METEO_FORECAST_DAYS,
 } from "./open-meteo.constants";
-import { OpenMeteoForecastDTO } from "./open-meteo.model";
+import { OpenMeteoForecastSchema } from "./open-meteo.model";
 import { mapForecast } from "./open-meteo.mapper";
 
 export { getForecast, buildGetForecastQuery };
@@ -17,9 +17,10 @@ const getForecast = async (
 ): Promise<Forecast> => {
   const query = buildGetForecastQuery(coordinates, days);
   const response = await fetch(query);
-  const json = (await response.json()) as OpenMeteoForecastDTO;
+  const json: unknown = await response.json();
+  const dto = OpenMeteoForecastSchema.parse(json);
 
-  const forecast = mapForecast(json, days);
+  const forecast = mapForecast(dto, days);
   return forecast;
 };
 
