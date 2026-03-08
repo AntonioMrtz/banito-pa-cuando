@@ -45,8 +45,6 @@ const getFirstGoodDay = async (
     return null;
   }
 
-  // TODO get only the first good day, not all of them?
-
   const goodDayHours: GoodDayHourData[] = goodDays[0].data.time.map(
     (hour, i) => ({
       hour,
