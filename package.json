@@ -9,10 +9,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint . --max-warnings 0 --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --no-error-on-unmatched-pattern --write \"**/*.{ts,tsx,js,jsx,css,scss,md}\"",
     "format:check": "prettier --no-error-on-unmatched-pattern --check \"**/*.{ts,tsx,js,jsx,css,scss,md}\"",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
@@ -31,7 +32,8 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "tailwind-merge": "^3.5.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -42,6 +44,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/coverage-v8": "^4.0.18",
     "cypress": "^15.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",

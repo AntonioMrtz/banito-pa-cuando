@@ -4,7 +4,11 @@ export {
   type Forecast,
   type HourlyUnits,
   type HourlyData,
+  type DayForecast,
   InvalidCoordinatesError,
+  InvalidUnitsForecastError,
+  InvalidForecastDataError,
+  InvalidDayNumberError,
 };
 
 interface Forecast {
@@ -16,9 +20,10 @@ interface Forecast {
 }
 
 interface HourlyUnits {
-  apparent_temperature: string;
+  apparentTemperature: string;
   precipitation: string;
   windspeed10m: string;
+  windgust10m: string;
 }
 
 interface HourlyData {
@@ -26,9 +31,32 @@ interface HourlyData {
   apparentTemperature: number[];
   precipitation: number[];
   windspeed10m: number[];
+  windgust10m: number[];
+}
+
+interface DayForecast {
+  data: HourlyData;
 }
 
 class InvalidCoordinatesError extends AppError {
+  constructor(message: string) {
+    super(message);
+  }
+}
+
+class InvalidUnitsForecastError extends AppError {
+  constructor(message: string) {
+    super(message);
+  }
+}
+
+class InvalidForecastDataError extends AppError {
+  constructor(message: string) {
+    super(message);
+  }
+}
+
+class InvalidDayNumberError extends AppError {
   constructor(message: string) {
     super(message);
   }
