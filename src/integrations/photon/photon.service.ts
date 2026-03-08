@@ -1,4 +1,7 @@
-import { PhotonFeatureDTO, PhotonFeaturePropertiesDTO } from "./photon.model";
+import {
+  PhotonFeatureSchema,
+  type PhotonFeaturePropertiesDTO,
+} from "./photon.model";
 import {
   PHOTON_API_URL,
   QUERY_MINIMUM,
@@ -23,8 +26,9 @@ const findLocations = async (
 ): Promise<LocationModel[]> => {
   const query = buildFindLocationsQuery(placeName);
   const response = await fetch(query);
-  const json = (await response.json()) as PhotonFeatureDTO;
-  const elements = json.features as PhotonFeaturePropertiesDTO[];
+  const json: unknown = await response.json();
+  const dto = PhotonFeatureSchema.parse(json);
+  const elements: PhotonFeaturePropertiesDTO[] = dto.features;
 
   const spainMainlandFiltered = elements.filter((v) =>
     countryCodes.includes(v.properties.countrycode as SupportedCountry),
