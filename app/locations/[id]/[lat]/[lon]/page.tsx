@@ -14,9 +14,10 @@ export default async function LocationPage({ params }: Props) {
 
   return firstGoodDay ? (
     <div>
-      Location ID: {id}, First Good Day: {firstGoodDay.date.toDateString()}
+      Location: {decodeURIComponent(id)}, First Good Day:{" "}
+      {firstGoodDay.date.toDateString()}
     </div>
   ) : (
-    <p>No good day found for this location.</p>
+    <p>No good day found for {decodeURIComponent(id)}.</p>
   );
 }

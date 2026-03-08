@@ -18,7 +18,8 @@
     "weathercode",
     "windspeed",
     "windgust10m",
-    "windgust_10m"
+    "windgust_10m",
+    "Alcázares"
   ],
   "editor.tabSize": 2
 }

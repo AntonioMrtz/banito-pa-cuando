@@ -60,7 +60,7 @@ export default function Home({}) {
         {locations &&
           locations.map((v) => (
             <Link
-              href={`/locations/${v.id}/${v.coordinates.lat}/${v.coordinates.lon}`}
+              href={`/locations/${v.name}/${v.coordinates.lat}/${v.coordinates.lon}`}
               key={v.id}
             >
               <LocationName name={v.name} city={v.city} state={v.state} />

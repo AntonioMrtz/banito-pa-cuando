@@ -37,7 +37,13 @@ const findLocations = async (
 };
 
 const buildFindLocationsQuery = (place: string): string => {
-  const sanitized = encodeURIComponent(place.trim().replace(/\s+/g, "-"));
+  const sanitized = place
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/\s+/g, "-");
+
   const params = new URLSearchParams({
     q: sanitized,
     lang: "default",
