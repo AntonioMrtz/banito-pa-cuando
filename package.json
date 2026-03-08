@@ -1,6 +1,6 @@
 {
   "name": "banito-pa-cuando",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=24"
@@ -9,27 +9,55 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
+    "lint": "eslint . --max-warnings 0 --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --no-error-on-unmatched-pattern --write \"**/*.{ts,tsx,js,jsx,css,scss,md}\"",
-    "format:check": "prettier --no-error-on-unmatched-pattern --check \"**/*.{ts,tsx,js,jsx,css,scss,md}\""
+    "format:check": "prettier --no-error-on-unmatched-pattern --check \"**/*.{ts,tsx,js,jsx,css,scss,md}\"",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "npm run build && start-server-and-test 'npm run start' http://localhost:3000 'npm run cypress:run'",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
     "@vercel/analytics": "^1.6.1",
     "@vercel/speed-insights": "^1.3.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lodash.debounce": "^4.0.8",
+    "lucide-react": "^0.575.0",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/coverage-v8": "^4.0.18",
+    "cypress": "^15.10.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "eslint-plugin-cypress": "^6.1.0",
+    "eslint-plugin-vitest": "^0.5.4",
+    "husky": "^9.1.7",
+    "jsdom": "^28.1.0",
     "prettier": "^3.8.1",
+    "start-server-and-test": "^2.1.5",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.0.18",
+    "zod": "^4.3.6"
   },
   "ignoreScripts": [
     "sharp",
