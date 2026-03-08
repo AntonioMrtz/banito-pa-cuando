@@ -2,14 +2,14 @@ import { memo } from "react";
 
 export interface LocationNameProps {
   name: string;
-  city: string;
-  state: string;
+  city?: string;
+  state?: string;
 }
 
 export function formatLocationName(
   name: string,
-  city: string,
-  state: string,
+  city?: string,
+  state?: string,
 ): string {
   return [name, city, state]
     .filter((part) => part && part.trim() !== "")
