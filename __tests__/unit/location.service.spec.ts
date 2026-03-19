@@ -1,6 +1,12 @@
-import { InvalidCoordinatesError } from "@/src/features/forecast/forecast.model";
+import {
+  InvalidCoordinatesError,
+  InvalidSearchTextError,
+} from "@/src/features/forecast/forecast.model";
 import { SPAIN_CENTER_COORDINATES } from "@/src/features/locations/location.constants";
-import { validateCoordinates } from "@/src/features/locations/location.service";
+import {
+  validateCoordinates,
+  validateTextInput,
+} from "@/src/features/locations/location.service";
 import { describe, it, expect } from "vitest";
 
 describe("Location service", () => {
@@ -22,5 +28,17 @@ describe("Location service", () => {
         lon: SPAIN_CENTER_COORDINATES.lon,
       }),
     ).toThrow(InvalidCoordinatesError);
+  });
+
+  it("Should thrown an error if text is too short", () => {
+    expect(() => validateTextInput("hi")).toThrow(InvalidSearchTextError);
+  });
+
+  it("Should thrown an error if text is too long", () => {
+    expect(() =>
+      validateTextInput(
+        "this is a very long text that exceeds the maximum allowed length much",
+      ),
+    ).toThrow(InvalidSearchTextError);
   });
 });

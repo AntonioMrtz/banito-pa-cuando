@@ -1,0 +1,6 @@
+.beach-bg {
+  background-image: url("../src/assets/imgs/beach/la-beach.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

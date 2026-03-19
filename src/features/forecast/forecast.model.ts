@@ -9,6 +9,7 @@ export {
   InvalidUnitsForecastError,
   InvalidForecastDataError,
   InvalidDayNumberError,
+  InvalidSearchTextError,
 };
 
 interface Forecast {
@@ -57,6 +58,12 @@ class InvalidForecastDataError extends AppError {
 }
 
 class InvalidDayNumberError extends AppError {
+  constructor(message: string) {
+    super(message);
+  }
+}
+
+class InvalidSearchTextError extends AppError {
   constructor(message: string) {
     super(message);
   }
