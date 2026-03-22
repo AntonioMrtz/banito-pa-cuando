@@ -30,11 +30,11 @@ describe("Location service", () => {
     ).toThrow(InvalidCoordinatesError);
   });
 
-  it("Should thrown an error if text is too short", () => {
+  it("Should throw an error if text is too short", () => {
     expect(() => validateTextInput("hi")).toThrow(InvalidSearchTextError);
   });
 
-  it("Should thrown an error if text is too long", () => {
+  it("Should throw an error if text is too long", () => {
     expect(() =>
       validateTextInput(
         "this is a very long text that exceeds the maximum allowed length much",

@@ -14,11 +14,12 @@ describe("Location API", () => {
   });
 
   it("Should return an error if the search text is too long", async () => {
-    await expect(() =>
-      findLocations(
-        "this is a very long text that exceeds the maximum allowed length much",
-        5,
-      ),
+    await expect(
+      async () =>
+        await findLocations(
+          "this is a very long text that exceeds the maximum allowed length much",
+          5,
+        ),
     ).rejects.toThrow("Invalid input length");
   });
 
