@@ -31,7 +31,3 @@
 
   color: var(--primary-orange-900);
 }
-
-.hover-opacity {
-  @apply hover:opacity-80 transition-opacity duration-200;
-}

@@ -26,7 +26,7 @@ export default function RoundedButton({
       : "bg-(--secondary-blue-600)";
   return (
     <button
-      className={`rounded-full ${bgColorClass} hover:opacity-80 p-2 cursor-pointer`}
+      className={`rounded-full ${bgColorClass} hover:opacity-80 p-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:opacity-50 transition-opacity duration-200`}
       onClick={onClick}
       disabled={disabled}
     >

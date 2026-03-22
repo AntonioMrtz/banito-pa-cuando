@@ -10,7 +10,6 @@ interface Props {
   disabled?: boolean;
 }
 
-// TODO: hover effect not working
 export default function IconButton({
   src,
   alt,
@@ -22,12 +21,12 @@ export default function IconButton({
 }: Props) {
   return (
     <button
-      className="cursor-pointer group"
+      className="cursor-pointer group disabled:cursor-not-allowed disabled:opacity-50"
       onClick={onClick}
       disabled={disabled}
     >
       <Image
-        className={`group-hover:filter-primary-orange-900 ${filterColor}`}
+        className={`${filterColor} group-hover:filter-primary-orange-500 transition-[filter] duration-200`}
         src={src}
         alt={alt}
         width={width}
