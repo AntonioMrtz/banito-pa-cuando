@@ -18,9 +18,10 @@ export default function LocationCard({
   state,
   coordinates,
 }: Props) {
+  const encodedName = encodeURIComponent(name);
   return (
     <Link
-      href={`/locations/${name}/${coordinates.lat}/${coordinates.lon}`}
+      href={`/locations/${encodedName}/${coordinates.lat}/${coordinates.lon}`}
       className="flex flex-row gap-4 items-center p-4"
     >
       <Icon

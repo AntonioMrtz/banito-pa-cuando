@@ -4,8 +4,8 @@ interface Props {
   src: string;
   alt: string;
   onClick: () => void;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
   filterColor: string;
   disabled?: boolean;
 }

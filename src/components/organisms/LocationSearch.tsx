@@ -31,6 +31,7 @@ export default function LocationSearch() {
     const text = location;
     // Do not trigger search if text is too short
     if (text.length < 3) {
+      setLocations([]);
       return;
     }
     debouncedSearch.current(text);
@@ -44,7 +45,7 @@ export default function LocationSearch() {
   }, []);
 
   return (
-    <div className="w-[50%]">
+    <div className="w-[40%]">
       <LocationSelector
         onLocationChange={handleInputLocationChange}
         locations={locations}

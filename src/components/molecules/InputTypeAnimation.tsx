@@ -20,7 +20,7 @@ export default function InputTypeAnimation({
     <div className="w-full relative">
       {!value && !isFocused && (
         <TypeAnimation
-          sequence={placeholders.flatMap((p) => [p, placeholderDelay || 2000])}
+          sequence={placeholders.flatMap((p) => [p, placeholderDelay ?? 2000])}
           wrapper="span"
           cursor={true}
           repeat={Infinity}
