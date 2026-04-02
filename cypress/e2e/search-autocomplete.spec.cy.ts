@@ -3,8 +3,9 @@ describe("Search Autocomplete", () => {
     const searchTerm = "Los Alcázares";
     cy.visit("/");
 
-    cy.get("input.flex").click();
-    cy.get("input.flex").type(searchTerm);
+    cy.findByTestId("input-type-animation")
+      .should("be.visible")
+      .type(searchTerm);
 
     cy.contains(searchTerm).should("be.visible");
   });

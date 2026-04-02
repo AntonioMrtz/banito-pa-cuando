@@ -1,13 +1,15 @@
 import { memo } from "react";
 
 export interface LocationNameProps {
-  name: string;
+  name?: string;
   city?: string;
   state?: string;
+  textSize?: "sm" | "md" | "lg";
+  textColor: string;
 }
 
 export function formatLocationName(
-  name: string,
+  name?: string,
   city?: string,
   state?: string,
 ): string {
@@ -16,8 +18,18 @@ export function formatLocationName(
     .join(", ");
 }
 
-function LocationNameComponent({ name, city, state }: LocationNameProps) {
-  return <span>{formatLocationName(name, city, state)}</span>;
+function LocationNameComponent({
+  name,
+  city,
+  state,
+  textSize = "md",
+  textColor,
+}: LocationNameProps) {
+  return (
+    <span className={`text-${textSize} ${textColor}`}>
+      {formatLocationName(name, city, state)}
+    </span>
+  );
 }
 
 export const LocationName = memo(LocationNameComponent);

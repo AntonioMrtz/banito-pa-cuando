@@ -1,9 +1,17 @@
-import { InvalidCoordinatesError } from "../forecast/forecast.model";
+import {
+  InvalidCoordinatesError,
+  InvalidSearchTextError,
+} from "../forecast/forecast.model";
 import { MAINLAND_SPAIN_BBOX, SUPPORTED_COUNTRIES } from "./location.constants";
 import { Coordinates, LocationModel } from "./locations.model";
 import * as PhotonService from "@/src/integrations/photon/photon.service";
 
-export { findLocations, validateCoordinates };
+export {
+  findLocations,
+  validateCoordinates,
+  validateTextInput,
+  getLocationNavigationUrl,
+};
 
 const findLocations = async (
   placeName: string,
@@ -13,7 +21,15 @@ const findLocations = async (
   if (!placeName) {
     return [];
   }
+  validateTextInput(placeName);
   return PhotonService.findLocations(placeName, limit, SUPPORTED_COUNTRIES);
+};
+
+const validateTextInput = (input: string): string => {
+  if (input.length < 3 || input.length > 30) {
+    throw new InvalidSearchTextError("Invalid input length");
+  }
+  return input;
 };
 
 const validateCoordinates = (coordinates: Coordinates) => {
@@ -29,4 +45,11 @@ const validateCoordinates = (coordinates: Coordinates) => {
       `Coordinates (${lat}, ${lon}) are outside of the mainland Spain bounding box.`,
     );
   }
+};
+
+const getLocationNavigationUrl = (
+  name: string,
+  coordinates: Coordinates,
+): string => {
+  return `/locations/${encodeURIComponent(name)}/${coordinates.lat}/${coordinates.lon}`;
 };

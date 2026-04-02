@@ -1,0 +1,18 @@
+@utility filter-neutral-gray-300 {
+  filter: invert(66%) sepia(15%) saturate(327%) hue-rotate(189deg)
+    brightness(91%) contrast(87%);
+}
+
+@utility filter-white {
+  filter: invert(100%);
+}
+
+@utility filter-primary-orange-500 {
+  filter: invert(58%) sepia(95%) saturate(500%) hue-rotate(5deg)
+    brightness(100%) contrast(90%);
+}
+
+@utility filter-primary-orange-900 {
+  filter: invert(33%) sepia(86%) saturate(600%) hue-rotate(8deg) brightness(90%)
+    contrast(95%);
+}

@@ -7,6 +7,22 @@ describe("Location API", () => {
     expect(result.length).toEqual(0);
   });
 
+  it("Should return an error if the search text is too short", async () => {
+    await expect(() => findLocations("hi", 5)).rejects.toThrow(
+      "Invalid input length",
+    );
+  });
+
+  it("Should return an error if the search text is too long", async () => {
+    await expect(
+      async () =>
+        await findLocations(
+          "this is a very long text that exceeds the maximum allowed length much",
+          5,
+        ),
+    ).rejects.toThrow("Invalid input length");
+  });
+
   it("Should return location when searching for it", async () => {
     const result = await findLocations("Murcia", 5);
     expect(result.length).toBeGreaterThan(0);

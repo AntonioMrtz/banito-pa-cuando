@@ -20,7 +20,9 @@
     "windgust10m",
     "windgust_10m",
     "Alcázares",
-    "Bañito"
+    "Bañito",
+    "nvmrc",
+    "testid"
   ],
   "editor.tabSize": 2
 }

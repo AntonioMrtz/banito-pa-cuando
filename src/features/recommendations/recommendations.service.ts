@@ -1,3 +1,4 @@
+import "server-only";
 import { Coordinates } from "../locations/locations.model";
 import * as ForecastService from "@/src/features/forecast/forecast.service";
 import {
