@@ -10,10 +10,10 @@ interface Props {
   onFocus?: () => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   sx?: React.CSSProperties;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
+  ariaLabel: string;
+  ariaLabelledBy: string;
   ariaAutocomplete?: "none" | "inline" | "list" | "both";
-  role?: "combobox" | "search" | "textbox";
+  role?: string;
 }
 
 export default function InputTypeAnimation({
@@ -28,7 +28,7 @@ export default function InputTypeAnimation({
   ariaLabel,
   ariaLabelledBy,
   ariaAutocomplete,
-  role,
+  role = "search",
 }: Props) {
   const [isFocused, setIsFocused] = useState(false);
 
@@ -48,7 +48,7 @@ export default function InputTypeAnimation({
         className="relative z-10 w-full bg-transparent focus:outline-none"
         type="text"
         value={value}
-        aria-label={ariaLabel ?? "Search location"}
+        aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
         aria-autocomplete={ariaAutocomplete ?? "none"}
         role={role ?? "search"}

@@ -56,6 +56,10 @@ export default function LocationInput({
         onBlur={handleBlurInput}
         onFocus={handleFocusInput}
         onKeyDown={onKeyDown}
+        ariaLabel="Location search input"
+        ariaLabelledBy="location-search-label"
+        ariaAutocomplete="list"
+        role="listbox"
       />
 
       <AnimatedVisibility show={showCloseButton}>
