@@ -52,6 +52,7 @@ export default function InputTypeAnimation({
           onBlur?.();
         }}
         onKeyDown={onKeyDown}
+        data-testid="input-type-animation"
       />
     </div>
   );

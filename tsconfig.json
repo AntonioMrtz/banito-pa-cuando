@@ -14,6 +14,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "noEmitOnError": true,
+    "types": ["cypress", "@testing-library/cypress"],
     "plugins": [
       {
         "name": "next"
@@ -30,7 +31,7 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts",
-    "cypress.config"
+    "cypress.config.ts"
   ],
   "exclude": ["node_modules"]
 }

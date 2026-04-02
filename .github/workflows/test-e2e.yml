@@ -1,4 +1,4 @@
-name: Format
+name: e2e Tests
 
 permissions:
   contents: read
@@ -10,7 +10,7 @@ on:
     branches: [main, development]
 
 jobs:
-  format:
+  e2e-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -20,5 +20,5 @@ jobs:
           node-version-file: ".nvmrc"
       - name: Install dependencies
         run: npm ci
-      - name: Check formatting
-        run: npm run format:check
+      - name: Run e2e tests
+        run: npm run test:e2e
