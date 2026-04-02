@@ -1,31 +1,46 @@
-import React from "react";
 import searchIcon from "@/src/assets/icons/search.svg";
 import closeIcon from "@/src/assets/icons/close.svg";
 import IconButton from "../atoms/buttons/IconButton";
+import AnimatedVisibility from "../atoms/AnimatedVisibility";
 import Icon from "../atoms/Icon";
 import InputTypeAnimation from "./InputTypeAnimation";
+import { useState, useEffect } from "react";
 
 interface Props {
-  onLocationChange: (location: string) => void;
+  value: string;
+  placeholders: string[];
+  handleFocusInput: () => void;
+  handleBlurInput: () => void;
+  handleInputChange: (value: string) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export default function LocationInput({ onLocationChange }: Props) {
-  const placeholdersMurcia = [
-    "La Manga del Mar Menor",
-    "Los Alcázares",
-    "Mazarrón",
-  ];
+export default function LocationInput({
+  value,
+  handleFocusInput,
+  handleBlurInput,
+  handleInputChange,
+  placeholders,
+  onKeyDown,
+}: Props) {
+  const [showCloseButton, setShowCloseButton] = useState(false);
 
-  const [locationInputValue, setLocationInputValue] =
-    React.useState<string>("");
-
-  const handleInputChange = (value: string) => {
-    setLocationInputValue(value);
-    onLocationChange(value);
+  const handleCloseButtonClick = () => {
+    handleInputChange("");
+    setShowCloseButton(false);
   };
 
+  const onValueChange = (value: string) => {
+    handleInputChange(value);
+    setShowCloseButton(value.length > 0);
+  };
+
+  useEffect(() => {
+    setShowCloseButton(value.length > 0);
+  }, [value]);
+
   return (
-    <div className="flex flex-row gap-4 w-full p-4 bg-(--neutral-white-200) rounded-xl items-center">
+    <div className="flex flex-row gap-4 w-full p-4 rounded-xl items-center">
       <Icon
         filterColor="filter-neutral-gray-300"
         src={searchIcon}
@@ -35,21 +50,24 @@ export default function LocationInput({ onLocationChange }: Props) {
       />
 
       <InputTypeAnimation
-        placeholders={placeholdersMurcia}
-        onChange={handleInputChange}
-        value={locationInputValue}
+        value={value}
+        placeholders={placeholders}
+        onChange={onValueChange}
+        onBlur={handleBlurInput}
+        onFocus={handleFocusInput}
+        onKeyDown={onKeyDown}
       />
 
-      {locationInputValue && (
+      <AnimatedVisibility show={showCloseButton}>
         <IconButton
           src={closeIcon}
           filterColor="filter-neutral-gray-300"
           alt="Close"
           width={18}
           height={18}
-          onClick={() => handleInputChange("")}
+          onClick={handleCloseButtonClick}
         />
-      )}
+      </AnimatedVisibility>
     </div>
   );
 }

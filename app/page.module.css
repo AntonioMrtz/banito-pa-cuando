@@ -4,3 +4,13 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.p-md {
+  padding: 1.5rem !important;
+}
+
+@media (width >= 768px) {
+  .p-md {
+    padding: 0rem !important;
+  }
+}

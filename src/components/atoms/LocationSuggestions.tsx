@@ -8,9 +8,7 @@ interface Props {
 
 export default function LocationSuggestions({ locations }: Props) {
   return (
-    <div className="flex flex-col gap-2 bg-(--neutral-white-200) rounded-xl">
-      {/* TODO display suggestions */}
-      {!locations.length && <div>No se han encontrado resultados</div>}
+    <div className="flex flex-col gap-2 bg-(--neutral-white-200) rounded-xl p-4">
       {locations &&
         locations.map((v) => (
           <LocationCard

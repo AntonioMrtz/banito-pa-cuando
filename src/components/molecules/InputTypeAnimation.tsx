@@ -1,23 +1,31 @@
-import React from "react";
+import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 
 interface Props {
+  value: string;
   placeholders: string[];
   placeholderDelay?: number;
   onChange: (value: string) => void;
-  value: string;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  sx?: React.CSSProperties;
 }
 
 export default function InputTypeAnimation({
+  value,
   placeholders,
   placeholderDelay,
   onChange,
-  value,
+  onBlur,
+  onFocus,
+  onKeyDown,
+  sx,
 }: Props) {
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative" style={sx}>
       {!value && !isFocused && (
         <TypeAnimation
           sequence={placeholders.flatMap((p) => [p, placeholderDelay ?? 2000])}
@@ -31,9 +39,19 @@ export default function InputTypeAnimation({
         className="relative z-10 w-full bg-transparent focus:outline-none"
         type="text"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
+        onChange={(e) => {
+          const value = e.target.value;
+          onChange(value);
+        }}
+        onFocus={() => {
+          setIsFocused(true);
+          onFocus?.();
+        }}
+        onBlur={() => {
+          setIsFocused(false);
+          onBlur?.();
+        }}
+        onKeyDown={onKeyDown}
       />
     </div>
   );

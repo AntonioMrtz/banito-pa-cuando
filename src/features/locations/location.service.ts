@@ -6,7 +6,12 @@ import { MAINLAND_SPAIN_BBOX, SUPPORTED_COUNTRIES } from "./location.constants";
 import { Coordinates, LocationModel } from "./locations.model";
 import * as PhotonService from "@/src/integrations/photon/photon.service";
 
-export { findLocations, validateCoordinates, validateTextInput };
+export {
+  findLocations,
+  validateCoordinates,
+  validateTextInput,
+  getLocationNavigationUrl,
+};
 
 const findLocations = async (
   placeName: string,
@@ -40,4 +45,11 @@ const validateCoordinates = (coordinates: Coordinates) => {
       `Coordinates (${lat}, ${lon}) are outside of the mainland Spain bounding box.`,
     );
   }
+};
+
+const getLocationNavigationUrl = (
+  name: string,
+  coordinates: Coordinates,
+): string => {
+  return `/locations/${encodeURIComponent(name)}/${coordinates.lat}/${coordinates.lon}`;
 };

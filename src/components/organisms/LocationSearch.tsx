@@ -2,16 +2,22 @@
 import { LocationModel } from "@/src/features/locations/locations.model";
 import { findLocations } from "@/src/features/locations/location.service";
 import debounce from "lodash.debounce";
-import React from "react";
-import LocationSelector from "../molecules/LocationSelector";
+import { useEffect, useRef, useState } from "react";
+import LocationInputAutocomplete from "../molecules/LocationInputAutocomplete";
 
 const MAX_ITEMS = 5;
 
+const INPUT_PLACEHOLDERS = [
+  "La Manga del Mar Menor",
+  "Los Alcázares",
+  "Mazarrón",
+];
+
 export default function LocationSearch() {
-  const [locations, setLocations] = React.useState<LocationModel[]>([]);
+  const [locations, setLocations] = useState<LocationModel[]>([]);
 
   // Client side request as rate limit is strict on this API.
-  const debouncedSearch = React.useRef(
+  const debouncedSearch = useRef(
     debounce(
       async (value: string) => {
         try {
@@ -37,7 +43,7 @@ export default function LocationSearch() {
     debouncedSearch.current(text);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const debounced = debouncedSearch.current;
     return () => {
       debounced.cancel();
@@ -45,10 +51,11 @@ export default function LocationSearch() {
   }, []);
 
   return (
-    <div className="w-[40%]">
-      <LocationSelector
-        onLocationChange={handleInputLocationChange}
+    <div className="flex flex-col gap-6">
+      <LocationInputAutocomplete
         locations={locations}
+        placeholders={INPUT_PLACEHOLDERS}
+        onLocationChange={handleInputLocationChange}
       />
     </div>
   );
