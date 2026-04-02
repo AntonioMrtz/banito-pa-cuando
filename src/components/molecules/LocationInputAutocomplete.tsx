@@ -101,7 +101,7 @@ export default function LocationInputAutocomplete({
     }
 
     blurTimeoutRef.current = setTimeout(() => {
-      setShowAutocomplete(true);
+      setShowAutocomplete(false);
       blurTimeoutRef.current = null;
     }, 120);
   };
