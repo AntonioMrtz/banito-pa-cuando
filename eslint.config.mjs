@@ -15,11 +15,12 @@ const eslintConfig = defineConfig([
     },
   },
   {
-    files: ["/__tests__/**/*.{ts,tsx,js,jsx}"],
+    files: ["**/__tests__/**/*.{ts,tsx,js,jsx}"],
     extends: [vitestPlugin.configs.recommended],
     rules: {
       "react-hooks/exhaustive-deps": "error",
       "react-hooks/rules-of-hooks": "error",
+      "vitest/valid-title": "off",
     },
   },
   {

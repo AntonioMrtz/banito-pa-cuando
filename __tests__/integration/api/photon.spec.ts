@@ -1,5 +1,4 @@
 import { SUPPORTED_COUNTRIES } from "@/src/features/locations/location.constants";
-import {} from "@/src/integrations/photon/photon.constants";
 import { findLocations } from "@/src/integrations/photon/photon.service";
 import { ZodError } from "zod";
 import { afterEach, describe, it, expect, vi } from "vitest";

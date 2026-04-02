@@ -1,3 +1,4 @@
+import "server-only";
 import { validateCoordinates } from "../locations/location.service";
 import { Coordinates } from "../locations/locations.model";
 import { FORECAST_EXPECTED_UNITS } from "./forecast.constants";

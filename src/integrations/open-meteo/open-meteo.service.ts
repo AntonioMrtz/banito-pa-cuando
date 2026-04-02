@@ -1,3 +1,4 @@
+import "server-only";
 import { Forecast } from "@/src/features/forecast/forecast.model";
 import { Coordinates } from "@/src/features/locations/locations.model";
 import {
