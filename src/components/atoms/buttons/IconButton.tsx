@@ -29,8 +29,8 @@ export default function IconButton({
         className={`${filterColor} group-hover:filter-primary-orange-500 transition-[filter] duration-200`}
         src={src}
         alt={alt}
-        width={width}
-        height={height}
+        width={width ?? 24}
+        height={height ?? 24}
       />
     </button>
   );

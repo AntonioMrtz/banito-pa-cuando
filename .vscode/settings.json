@@ -21,7 +21,8 @@
     "windgust_10m",
     "Alcázares",
     "Bañito",
-    "nvmrc"
+    "nvmrc",
+    "testid"
   ],
   "editor.tabSize": 2
 }
