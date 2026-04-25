@@ -1,0 +1,33 @@
+@import "tailwindcss";
+@import "./fonts.css";
+@import "./filters.css";
+
+:root {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  /* Primary Colors (Orange) */
+  --primary-orange-100: #fdf6e9;
+  --primary-orange-200: #fbe8c9;
+  --primary-orange-300: #f9d3a9;
+  --primary-orange-500: #ffa500;
+  --primary-orange-900: #271504;
+
+  /* Secondary Colors (Blue) */
+  --secondary-blue-100: #e4eaf2;
+  --secondary-blue-300: #d0e8ff;
+  --secondary-blue-400: #a0d1ff;
+  --secondary-blue-500: #70baff;
+  --secondary-blue-600: #4093ff;
+  --secondary-blue-900: #0a3c8f;
+
+  /* Neutral Colors (Grays) */
+  --neutral-gray-300: #94a3b8;
+
+  --neutral-white-100: #ffffff;
+  --neutral-white-200: rgba(255, 255, 255, 0.95);
+
+  color: var(--primary-orange-900);
+}
